@@ -62,7 +62,7 @@ const App = () => {
     reader.onload = (e) => {
       try {
         const data = JSON.parse(e.target.result);
-        console.log('File imported:', data); // ✅ DEBUG
+        console.log('File imported:', data);
   
         if (!Array.isArray(data.shapes)) {
           alert('Invalid file format: shapes must be an array');
