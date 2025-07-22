@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# نقاشی بکش لویی (بخش اول)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+یک ویرایشگر ساده‌ی نقاشی است که امکان ترسیم اشکال هندسی (دایره، مربع و مثلث) را در محیطی تعاملی فراهم می‌کند.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ویژگی‌ها
+- انتخاب شکل مورد نظر از ابزار سمت راست (دایره، مربع و مثلث)
+- کلیک روی بوم (Canvas) برای رسم شکل انتخاب شده
+- حذف شکل با **دوبار کلیک** بر روی آن
+- پشتیبانی از **Drag and Drop** برای کشیدن اشکال از نوار ابزار به بوم
+- شمارش تعداد هر نوع شکل در پایین صفحه
+- امکان نام‌گذاری نقاشی
+- دکمه‌ی **Export** برای دانلود نقاشی به فرمت JSON
+- دکمه‌ی **Import** برای بارگذاری نقاشی
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## توضیح کارکرد اجزای اصلی
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### فایل `App.js`
+- مدیریت state برنامه شامل:
+- لیست اشکال (`shapes`)
+-  شکل انتخاب شده (`selectedShape`)
+-  عنوان نقاشی (`title`)
+- شامل توابع اصلی:
+-  `addShape(x, y, type)` جهت اضافه کردن شکل
+-  `removeShape(id)` جهت حذف شکل با دوبار کلیک
+-  `importShapes(e)` جهت بارگذاری فایل JSON
+-  `exportShapes()` جهت خروجی گرفتن به صورت JSON
 
-### `npm test`
+### فایل `Canvas.js`
+- رسم اشکال روی صفحه
+- دریافت کلیک و دراپ برای اضافه کردن شکل‌ها
+- استفاده از `onDrop` و `onDragOver` برای پشتیبانی از Drag and Drop
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### فایل `Shape.js`
+- نمایش بصری هر شکل با توجه به نوع آن
+- دایره و مربع توخالی با CSS
+- مثلث با استفاده از `SVG` و `polygon` برای دقیق و توخالی بودن
 
-### `npm run build`
+### فایل `Sidebar.js`
+- نوار ابزار سمت راست برای انتخاب شکل
+- امکان drag کردن شکل‌ها به canvas
+- نمایش پیش‌نمایش (preview) دقیق با استفاده از DOM و SVG
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### فایل `Header.js`
+- شامل input برای عنوان
+- دکمه‌های `Export` و `Import`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## نحوه اجرای برنامه
+```bash
+npm install
+npm start
+  
